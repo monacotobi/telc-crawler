@@ -40,11 +40,24 @@ def parse_html(html):
             })
     return data
 
+def check_availability(data, target_date, alert_string):
+    for entry in data:
+        if entry['date'] == target_date:
+            print(entry['availability'])
+            for a in entry['availability']:
+                print(a)
+                if alert_string not in a:
+                    print(f'No results yet for {entry['date'][4:]}')
+                else:
+                    print(f'Results for {entry['date'][4:]} are available!')
+
+
 def main():
     html = fetch_page(URL)
     if html:
         data = parse_html(html)
-        print(data)
+        check_availability(data=data, target_date=TARGET_DATE, alert_string=ALERT_STRING)
+        #print(data)
 
 if __name__ == "__main__":
     main()
