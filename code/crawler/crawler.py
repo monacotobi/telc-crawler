@@ -8,7 +8,7 @@ from code.utils.utils import logger
 URL = 'https://www.sprachartberlin.de/de/telc-pruefung-ergebnis-telc-exam-result/'
 CHECK_STRING = 'NOCH NICHT DA'
 ALERT_STRING = 'SCHON DA'
-TARGET_DATE = 'Sa, 14.09.2024'
+TARGET_DATE = 'Sa, 20.07.2024'
 
 def fetch_page(url):
     try:
