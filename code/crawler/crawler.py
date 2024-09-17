@@ -56,7 +56,7 @@ def check_availability(data, target_date, alert_string):
                     messages.append(message)
                 else:
                     logger.info(f'Results for {entry['date'][4:]} are available!')
-                    message = f'😔 {entry['date'][4:]}: {a}'
+                    message = f'🥳 {entry['date'][4:]}: {a}'
                     messages.append(message)
     return messages
 
