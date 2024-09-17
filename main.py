@@ -7,6 +7,7 @@ from aiohttp import web
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 
+from telegram import start_bot
 from utils import logger
 
 # Configuration
