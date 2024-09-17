@@ -48,4 +48,4 @@ def get_tg_config():
 tg_config = get_tg_config()
 
 USERS = [1579152065, 144476606]
-COMMANDS = ['/check']
+COMMANDS = ['/check', '/start']
