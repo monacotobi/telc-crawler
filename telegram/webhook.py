@@ -2,7 +2,7 @@ from aiohttp import web
 
 from utils import logger
 
-async def handle_telegram_webhook(request):
+async def handle_webhook(request):
     logger.info('Telegram webhook handler started')
     try:
         # Verify secret token
