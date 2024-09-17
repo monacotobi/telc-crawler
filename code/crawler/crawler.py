@@ -46,7 +46,7 @@ def parse_html(html):
 
 def check_availability(data, target_date, alert_string):
     messages = []
-    results = ['🥳 20.07.2024: SCHON DA', '🥳 20.07.2024: B1 SCHON DA']
+    results = ['🥳 20.04.2024: SCHON DA', '🥳 20.04.2024: B1 SCHON DA']
     for entry in data:
         if entry['date'] == target_date:
             print(entry['availability'])
