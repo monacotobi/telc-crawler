@@ -43,7 +43,7 @@ async def process_webhook(data):
         return
 
     if webhook_data['message'] == '/start':
-        message = f'Welcome to the telc results bot. Please use the /check command to check for results.'
+        message = f'Welcome to the telc results bot.\n\nI will check for telc results tree times a day. If there is a new result, I will inform you.\n\nAt any time you can use the /check command to check for results.'
         await bot.send_message(user_id=user_id, text=message)
         return
 
