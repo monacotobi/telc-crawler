@@ -1,9 +1,13 @@
+import asyncio
+from aiohttp import web
 import os
 import requests
 
 from aiohttp import web
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
+
+from utils import logger
 
 # Configuration
 URL = 'https://www.sprachartberlin.de/de/telc-pruefung-ergebnis-telc-exam-result/'
@@ -22,17 +26,17 @@ def fetch_page(url):
         response.raise_for_status() # Raises HTTPErrror for bad responses
         return response.text
     except requests.RequestException as e:
-        print(f'Error fetching the page: {e}')
+        logger.error(f'Error fetching the page: {e}')
         return None
     except Exception as e:
-        print(f'An Exception occured: {e}')
+        logger.error(f'An Exception occured: {e}')
         return None
     
 def parse_html(html):
     soup = BeautifulSoup(html, 'html.parser')
     table = soup.find('table')
     if not table:
-        print('Table not found in HTML.')
+        logger.info(f'Table not found in HTML: {html}')
         return []
     
     rows = table.find_all('tr')
@@ -55,11 +59,10 @@ def check_availability(data, target_date, alert_string):
         if entry['date'] == target_date:
             print(entry['availability'])
             for a in entry['availability']:
-                print(a)
                 if alert_string not in a:
-                    print(f'No results yet for {entry['date'][4:]}')
+                    logger.info(f'No results yet for {entry['date'][4:]}')
                 else:
-                    print(f'Results for {entry['date'][4:]} are available!')
+                    logger.info(f'Results for {entry['date'][4:]} are available!')
 
 
 def main():
@@ -69,11 +72,16 @@ def main():
         check_availability(data=data, target_date=TARGET_DATE, alert_string=ALERT_STRING)
         #print(data)
 
-def create_app()
-    app = 
-
-
-
+def create_app():
+    app = web.Application()
+    app.router.add_post('webhook/telc', handle_webhook)
+    return app
 
 if __name__ == "__main__":
-    main()
+    try:
+        asyncio.run(start_bot())
+    except Exception as e:
+        logger.error(f'An Exception occured: {e}')
+
+    app = create_app()
+    web.run_app(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
