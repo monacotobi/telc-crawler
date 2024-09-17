@@ -2,17 +2,10 @@ import asyncio
 import os
 
 from aiohttp import web
-from dotenv import load_dotenv
 
 from code.telegram import start_bot
 from code.utils.utils import logger
 from code.telegram.webhook import handle_webhook
-
-
-if os.path.exists('.env'):
-    load_dotenv('.env')
-
-USER = os.getenv('USER')
 
 def create_app():
     app = web.Application()
