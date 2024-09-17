@@ -1,7 +1,9 @@
 import os
-from dotenv import load_dotenv
 import requests
+
+from aiohttp import web
 from bs4 import BeautifulSoup
+from dotenv import load_dotenv
 
 # Configuration
 URL = 'https://www.sprachartberlin.de/de/telc-pruefung-ergebnis-telc-exam-result/'
@@ -12,7 +14,7 @@ TARGET_DATE = 'Sa, 14.09.2024'
 if os.path.exists('.env'):
     load_dotenv('.env')
 
-TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
+USER = os.getenv('USER')
 
 def fetch_page(url):
     try:
@@ -66,6 +68,12 @@ def main():
         data = parse_html(html)
         check_availability(data=data, target_date=TARGET_DATE, alert_string=ALERT_STRING)
         #print(data)
+
+def create_app()
+    app = 
+
+
+
 
 if __name__ == "__main__":
     main()
