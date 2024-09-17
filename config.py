@@ -17,6 +17,7 @@ class TG_TestingConfig(TG_Config):
     '''TG testing configuration'''
     TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN_TEST')
     TELEGRAM_SECRET = os.getenv('TELEGRAM_SECRET')
+    TELEGRAM_WEBHOOK = os.getenv('TELEGRAM_WEBHOOK_TEST')
     DEBUG = True
     TESTING = True
 
@@ -24,6 +25,7 @@ class TG_ProductionConfig(TG_Config):
     '''TG production configuration'''
     TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
     TELEGRAM_SECRET = os.getenv('TELEGRAM_SECRET')
+    TELEGRAM_WEBHOOK = os.getenv('TELEGRAM_WEBHOOK')
     DEBUG = False
     TESTING = False
 
