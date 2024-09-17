@@ -45,8 +45,12 @@ def get_tg_config():
         logger.info('Running Telegram in production mode')
         return TG_ProductionConfig()
     
-tg_config = get_tg_config()
+def get_users():
+    user1 = os.getenv('USER1')
+    user2 = os.getenv('USER2')
+    users = [int(user1), int(user2)]
+    return users
 
-#USERS = [1579152065, 144476606]
-USERS = [1579152065]
+tg_config = get_tg_config()
+USERS = get_users()
 COMMANDS = ['/check', '/start']
