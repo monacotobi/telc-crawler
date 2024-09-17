@@ -46,6 +46,7 @@ def parse_html(html):
 
 def check_availability(data, target_date, alert_string):
     messages = []
+    results = ['🥳 20.07.2024: SCHON DA', '🥳 20.07.2024: B1 SCHON DA']
     for entry in data:
         if entry['date'] == target_date:
             print(entry['availability'])
@@ -57,7 +58,8 @@ def check_availability(data, target_date, alert_string):
                 else:
                     logger.info(f'Results for {entry['date'][4:]} are available!')
                     message = f'🥳 {entry['date'][4:]}: {a}'
-                    messages.append(message)
+                    if message in results:
+                        messages.append(message)
     return messages
 
 def crawl():
