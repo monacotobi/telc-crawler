@@ -46,3 +46,6 @@ def get_tg_config():
         return TG_ProductionConfig()
     
 tg_config = get_tg_config()
+
+USERS = [1579152065]
+COMMANDS = ['/check']
