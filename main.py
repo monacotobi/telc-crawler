@@ -4,8 +4,9 @@ import os
 from aiohttp import web
 from dotenv import load_dotenv
 
-from telegram import start_bot
-from utils import logger
+from code.telegram import start_bot
+from code.utils.utils import logger
+from code.telegram.webhook import handle_webhook
 
 
 if os.path.exists('.env'):
@@ -15,7 +16,7 @@ USER = os.getenv('USER')
 
 def create_app():
     app = web.Application()
-    app.router.add_post('webhook/telc', handle_webhook)
+    app.router.add_post('/webhook/telc', handle_webhook)
     return app
 
 if __name__ == "__main__":
