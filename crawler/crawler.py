@@ -45,20 +45,27 @@ def parse_html(html):
     return data
 
 def check_availability(data, target_date, alert_string):
+    messages = []
     for entry in data:
         if entry['date'] == target_date:
             print(entry['availability'])
             for a in entry['availability']:
                 if alert_string not in a:
                     logger.info(f'No results yet for {entry['date'][4:]}')
+                    message = f'😔 {entry['date'][4:]}: {alert_string}'
+                    messages.append(message)
                 else:
                     logger.info(f'Results for {entry['date'][4:]} are available!')
+                    message = f'😔 {entry['date'][4:]}: {alert_string}'
+                    messages.append(message)
+    return messages
 
 def crawl():
     html = fetch_page(URL)
     if html:
         data = parse_html(html)
-        check_availability(data=data, target_date=TARGET_DATE, alert_string=ALERT_STRING)
+        messages = check_availability(data=data, target_date=TARGET_DATE, alert_string=ALERT_STRING)
+        return messages
         
 if __name__ == "__main__":
     crawl()
