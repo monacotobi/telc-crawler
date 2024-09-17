@@ -4,8 +4,7 @@ from code.utils.utils import logger
 from code.crawler.crawler import crawl
 from code.telegram.utils import verify_secret_token, validate_webhook_data, extract_webhook_data
 from code.telegram import bot
-USERS = [1579152065]
-COMMANDS = ['/check']
+from code.utils.config import USERS, COMMANDS
 
 async def handle_webhook(request):
     logger.info('Telegram webhook handler started')
