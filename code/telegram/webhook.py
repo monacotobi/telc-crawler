@@ -40,10 +40,12 @@ async def process_webhook(data):
     if webhook_data['message'] not in COMMANDS:
         message = f'Please use the /check command to check for results.'
         await bot.send_message(user_id=user_id, text=message)
+        return
 
     if webhook_data['message'] == '/start':
         message = f'Welcome to the telc results bot. Please use the /check command to check for results.'
         await bot.send_message(user_id=user_id, text=message)
+        return
 
     messages = crawl()
     if messages:
