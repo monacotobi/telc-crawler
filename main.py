@@ -39,3 +39,12 @@ def parse_html(html):
                 'availability': availability
             })
     return data
+
+def main():
+    html = fetch_page(URL)
+    if html:
+        data = parse_html(html)
+        print(data)
+
+if __name__ == "__main__":
+    main()
