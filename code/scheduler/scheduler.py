@@ -8,7 +8,7 @@ from code.utils.utils import logger
 async def scheduler():
     logger.info('Starting scheduler')
     messages = crawl()
-    results = ['🥳 20.04.2024: SCHON DA', '🥳 20.04.2024: B1 SCHON DA']
+    results = ['🥳 14.09.2024: SCHON DA', '🥳 14.09.2024: B1 SCHON DA']
     for user_id in USERS:
         for message in messages:
             logger.info(f'Sending message to {user_id}: {message}')

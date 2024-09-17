@@ -8,7 +8,7 @@ from code.utils.utils import logger
 URL = 'https://www.sprachartberlin.de/de/telc-pruefung-ergebnis-telc-exam-result/'
 CHECK_STRING = 'NOCH NICHT DA'
 ALERT_STRING = 'SCHON DA'
-TARGET_DATE = 'Sa, 20.04.2024'
+TARGET_DATE = 'Sa, 14.09.2024'
 
 def fetch_page(url):
     try:
@@ -46,7 +46,7 @@ def parse_html(html):
 
 def check_availability(data, target_date, alert_string):
     messages = []
-    results = ['🥳 20.04.2024: SCHON DA', '🥳 20.04.2024: B1 SCHON DA']
+    results = ['🥳 14.09.2024: SCHON DA', '🥳 14.09.2024: B1 SCHON DA']
     for entry in data:
         if entry['date'] == target_date:
             print(entry['availability'])
