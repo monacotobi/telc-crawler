@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 import requests
 from bs4 import BeautifulSoup
 
@@ -6,6 +8,11 @@ URL = 'https://www.sprachartberlin.de/de/telc-pruefung-ergebnis-telc-exam-result
 CHECK_STRING = 'NOCH NICHT DA'
 ALERT_STRING = 'SCHON DA'
 TARGET_DATE = 'Sa, 14.09.2024'
+
+if os.path.exists('.env'):
+    load_dotenv('.env')
+
+TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 
 def fetch_page(url):
     try:
