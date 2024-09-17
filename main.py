@@ -3,8 +3,9 @@ from bs4 import BeautifulSoup
 
 # Configuration
 URL = 'https://www.sprachartberlin.de/de/telc-pruefung-ergebnis-telc-exam-result/'
-CHECK_STRING = 'NOCH NICHT DA / NOT YET AVAILABLE'
-ALERT_STRING = 'SCHON DA / AVAILABLE'
+CHECK_STRING = 'NOCH NICHT DA'
+ALERT_STRING = 'SCHON DA'
+TARGET_DATE = 'Sa, 14.09.2024'
 
 def fetch_page(url):
     try:
